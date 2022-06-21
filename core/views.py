@@ -121,7 +121,9 @@ def assign_tasks(task_list):
     total_tasks = task_list.count()
     assigned_tasks = 0
     if total_tasks>0:
-        max_sequence = task_list.aggregate(Max('sequence'))['sequence__max']
+        max_sequence = task_list.aggregate(
+            Max('sequence')
+        )['sequence__max']
         for j in range(1, max_sequence+1):
             c_task_list = task_list.filter(sequence=j)
             for t in c_task_list:
